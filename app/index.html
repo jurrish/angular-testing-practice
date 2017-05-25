@@ -2,10 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>cowsay demo</title>
+    <title> Ipsum </title>
   </head>
   <body>
-    <h1> cowsay demo </h1>
-    <cowsay></cowsay>
+    <div class="ipsum-app" ng-app="ipsumApp">
+      <header>
+        <h1> Hacker Ipsum </h1>
+      </header>
+      <main
+      ng-controller="IpsumController as ipsumCtrl">
+      <form ng-submit ="ipsumCtrl.handleSubmit()">
+      <select ng-model="ipsumCtrl.selected">
+        <!-- make an option, then that item is the value in the array we ng-repeat over -->
+        <option
+        ng-repeat="item in ipsumCtrl.choices track by $index"
+        value="{{item}}">{{item}}
+        </option>
+      </select>
+      <button type="submit">Generate {{ipsumCtrl.selected}} ipsum</button>
+      </form>
+
+      {{ipsumCtrl.content}}
+
+      </main>
+    </div>
   </body>
 </html>
